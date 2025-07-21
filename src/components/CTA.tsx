@@ -61,10 +61,10 @@ const CTA = () => {
                 Notre équipe française est là pour vous accompagner dans votre prise en main.
               </p>
               <div className="flex space-x-4">
-                <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button variant="secondary" className="text-white">
                   Démo personnalisée
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button variant="secondary" className="text-white">
                   Contacter l'équipe
                 </Button>
               </div>
