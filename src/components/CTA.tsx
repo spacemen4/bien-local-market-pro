@@ -44,10 +44,10 @@ const CTA = () => {
                 Disponible sur iOS et Android. Synchronisation automatique avec votre compte web.
               </p>
               <div className="flex space-x-4">
-                <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button variant="secondary" className="text-white">
                   App Store
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button variant="secondary" className="text-white">
                   Google Play
                 </Button>
               </div>
