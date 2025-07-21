@@ -3,36 +3,40 @@ import { Menu, Building2 } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b z-50">
+    <header className="fixed top-0 w-full bg-gradient-glass backdrop-blur-glass border-b border-white/10 z-50 shadow-float">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <Building2 className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-bold text-foreground">ÉtatLux</span>
+        <div className="flex items-center space-x-2 group">
+          <Building2 className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
+          <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">ÉtatLux</span>
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-foreground hover:text-primary transition-colors">
+          <a href="#features" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Fonctionnalités
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#pricing" className="text-foreground hover:text-primary transition-colors">
+          <a href="#pricing" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Tarifs
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#testimonials" className="text-foreground hover:text-primary transition-colors">
+          <a href="#testimonials" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Témoignages
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#contact" className="text-foreground hover:text-primary transition-colors">
+          <a href="#contact" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Contact
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
         </nav>
 
         <div className="flex items-center space-x-4">
-          <Button variant="outline" className="hidden md:inline-flex">
+          <Button variant="outline" className="hidden md:inline-flex hover:bg-primary/5 transition-all duration-300 hover:scale-105">
             Connexion
           </Button>
-          <Button className="bg-gradient-hero hover:opacity-90 shadow-glow">
+          <Button className="bg-gradient-premium hover:shadow-premium transition-all duration-300 hover:scale-105 animate-pulse-glow">
             Essai Gratuit
           </Button>
-          <Button variant="outline" size="icon" className="md:hidden">
+          <Button variant="outline" size="icon" className="md:hidden hover:bg-primary/5 transition-all duration-300">
             <Menu className="h-4 w-4" />
           </Button>
         </div>
