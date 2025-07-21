@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Menu, Building2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -23,10 +24,10 @@ const Header = () => {
             Témoignages
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#contact" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
+          <Link to="/contact" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Contact
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-4">
