@@ -30,10 +30,10 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center space-x-4">
-          <Button variant="outline" className="hidden md:inline-flex hover:bg-primary/5 transition-all duration-300 hover:scale-105">
+          <Button variant="default" className="hidden md:inline-flex hover:bg-primary/5 transition-all duration-300 hover:scale-105">
             Connexion
           </Button>
-          <Button className="bg-gradient-premium hover:shadow-premium transition-all duration-300 hover:scale-105 animate-pulse-glow">
+          <Button className="bg-gradient-premium text-black hover:shadow-premium transition-all duration-300 hover:scale-105 animate-pulse-glow">
             Essai Gratuit
           </Button>
           <Button variant="outline" size="icon" className="md:hidden hover:bg-primary/5 transition-all duration-300">
