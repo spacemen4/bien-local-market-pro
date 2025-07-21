@@ -2,9 +2,9 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-      <form>
+    <div className="container mx-auto px-4 py-32">
+      <h1 className="text-4xl font-bold mb-4 text-center">Contactez-nous</h1>
+      <form className="max-w-xl mx-auto">
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
           <input type="text" id="name" name="name" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
