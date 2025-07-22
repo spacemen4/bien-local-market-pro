@@ -35,20 +35,20 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-background/80">
               <li><a href="#features" className="hover:text-primary transition-colors">Fonctionnalités</a></li>
               <li><a href="#pricing" className="hover:text-primary transition-colors">Tarifs</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Intégrations</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">API</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Mobile</a></li>
+              <li><a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Intégrations</a></li>
+              <li><a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">API</a></li>
+              <li><a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Mobile</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Support</h3>
             <ul className="space-y-2 text-sm text-background/80">
-              <li><a href="#" className="hover:text-primary transition-colors">Centre d'aide</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Formations</a></li>
+              <li><a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Centre d'aide</a></li>
+              <li><a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Documentation</a></li>
+              <li><a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Formations</a></li>
               <li><a href="#contact" className="hover:text-primary transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Statut système</a></li>
+              <li><a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Statut système</a></li>
             </ul>
           </div>
         </div>
@@ -59,9 +59,9 @@ const Footer = () => {
               © 2024 ÉtatLux. Tous droits réservés.
             </div>
             <div className="flex space-x-6 text-sm text-background/80">
-              <a href="#" className="hover:text-primary transition-colors">Conditions générales</a>
-              <a href="#" className="hover:text-primary transition-colors">Confidentialité</a>
-              <a href="#" className="hover:text-primary transition-colors">Mentions légales</a>
+              <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Conditions générales</a>
+              <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Confidentialité</a>
+              <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Mentions légales</a>
             </div>
           </div>
         </div>

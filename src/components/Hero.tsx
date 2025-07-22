@@ -25,13 +25,17 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/95 font-semibold shadow-premium hover:shadow-float transform hover:scale-105 transition-all duration-300">
-                Essai Gratuit 14 Jours
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm bg-white/5 hover:border-white/50 transition-all duration-300">
-                <Play className="mr-2 h-5 w-5" />
-                Voir la Démo
-              </Button>
+              <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/95 font-semibold shadow-premium hover:shadow-float transform hover:scale-105 transition-all duration-300">
+                  Essai Gratuit 14 Jours
+                </Button>
+              </a>
+              <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm bg-white/5 hover:border-white/50 transition-all duration-300">
+                  <Play className="mr-2 h-5 w-5" />
+                  Voir la Démo
+                </Button>
+              </a>
             </div>
 
             <div className="flex items-center space-x-6 text-sm text-white/80">

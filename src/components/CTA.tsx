@@ -22,10 +22,12 @@ const CTA = () => {
                 placeholder="Votre email professionnel"
                 className="bg-white text-foreground border-0 flex-1"
               />
-              <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white">
-                Commencer l'essai
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white">
+                  Commencer l'essai
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
             </div>
             <div className="flex items-center justify-center space-x-6 text-sm text-white/80">
               <span>✓ Aucune carte requise</span>
@@ -44,12 +46,16 @@ const CTA = () => {
                 Disponible sur iOS et Android. Synchronisation automatique avec votre compte web.
               </p>
               <div className="flex space-x-4">
-                <Button variant="secondary" className="text-white">
-                  App Store
-                </Button>
-                <Button variant="secondary" className="text-white">
-                  Google Play
-                </Button>
+                <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
+                  <Button variant="secondary" className="text-white">
+                    App Store
+                  </Button>
+                </a>
+                <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
+                  <Button variant="secondary" className="text-white">
+                    Google Play
+                  </Button>
+                </a>
               </div>
             </div>
             
@@ -61,9 +67,11 @@ const CTA = () => {
                 Notre équipe française est là pour vous accompagner dans votre prise en main.
               </p>
               <div className="flex space-x-4">
-                <Button variant="secondary" className="text-white">
-                  Démo personnalisée
-                </Button>
+                <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
+                  <Button variant="secondary" className="text-white">
+                    Démo personnalisée
+                  </Button>
+                </a>
                 <Button variant="secondary" className="text-white">
                   Contacter l'équipe
                 </Button>
