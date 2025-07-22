@@ -114,18 +114,24 @@ const Pricing = () => {
                     Nous Contacter
                   </Button>
                 ) : (
-                  <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="w-full">
-                    <Button
-                      className={`w-full mt-8 ${
-                        plan.popular
-                          ? 'bg-gradient-hero hover:opacity-90 shadow-glow'
-                          : 'bg-primary hover:bg-primary/90'
-                      }`}
-                      size="lg"
-                    >
-                      Commencer
-                    </Button>
-                  </a>
+                  <Button
+                    onClick={() => {
+                      if (plan.name === "Professionnel") {
+                        // TODO: Replace with your actual Stripe payment link
+                        window.location.href = "https://buy.stripe.com/test_your_payment_link";
+                      } else {
+                        window.location.href = "https://bien-local-market-pro.vercel.app";
+                      }
+                    }}
+                    className={`w-full mt-8 ${
+                      plan.popular
+                        ? 'bg-gradient-hero hover:opacity-90 shadow-glow'
+                        : 'bg-primary hover:bg-primary/90'
+                    }`}
+                    size="lg"
+                  >
+                    Commencer
+                  </Button>
                 )}
               </CardContent>
             </Card>
