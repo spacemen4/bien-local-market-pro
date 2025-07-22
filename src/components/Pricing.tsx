@@ -107,12 +107,14 @@ const Pricing = () => {
                 </ul>
 
                 {plan.name === "Agence" ? (
-                  <Button
-                    className="w-full mt-8 bg-primary hover:bg-primary/90"
-                    size="lg"
-                  >
-                    Nous Contacter
-                  </Button>
+                  <a href="#contact" className="w-full">
+                    <Button
+                      className="w-full mt-8 bg-primary hover:bg-primary/90"
+                      size="lg"
+                    >
+                      Nous Contacter
+                    </Button>
+                  </a>
                 ) : (
                   <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="w-full">
                     <Button
