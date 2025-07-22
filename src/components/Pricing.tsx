@@ -106,16 +106,27 @@ const Pricing = () => {
                   ))}
                 </ul>
 
-                <Button 
-                  className={`w-full mt-8 ${
-                    plan.popular 
-                      ? 'bg-gradient-hero hover:opacity-90 shadow-glow' 
-                      : 'bg-primary hover:bg-primary/90'
-                  }`}
-                  size="lg"
-                >
-                  {plan.name === "Agence" ? "Nous Contacter" : "Commencer"}
-                </Button>
+                {plan.name === "Agence" ? (
+                  <Button
+                    className="w-full mt-8 bg-primary hover:bg-primary/90"
+                    size="lg"
+                  >
+                    Nous Contacter
+                  </Button>
+                ) : (
+                  <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer" className="w-full">
+                    <Button
+                      className={`w-full mt-8 ${
+                        plan.popular
+                          ? 'bg-gradient-hero hover:opacity-90 shadow-glow'
+                          : 'bg-primary hover:bg-primary/90'
+                      }`}
+                      size="lg"
+                    >
+                      Commencer
+                    </Button>
+                  </a>
+                )}
               </CardContent>
             </Card>
           ))}
