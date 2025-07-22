@@ -2,27 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, ArrowLeft, CreditCard, Shield, Users, Zap } from "lucide-react";
+import { Check, ArrowLeft, CreditCard, Shield, Users, Zap, AlertCircle } from "lucide-react";
 
-// Simuler Stripe (dans un vrai projet, vous importeriez Stripe)
-const mockStripe = {
-  elements: () => ({
-    create: () => ({
-      mount: () => {},
-      on: () => {},
-      destroy: () => {}
-    })
-  }),
-  createPaymentMethod: () => Promise.resolve({
-    error: null,
-    paymentMethod: { id: 'pm_test_123' }
-  })
-};
+// Configuration Stripe avec votre vraie clé publique
+const STRIPE_PUBLIC_KEY = 'pk_test_51RnjDbPd6cch1PYQrccWNd9DxzNw85nZhuhM2w12aXzcBtmOojXrtnnv5JKhSwXtXADWk3ztE8ZYPQWe5rcuGrRy00FQeeA6li';
 
 const Pricing = () => {
+  const [stripe, setStripe] = useState(null);
+  const [elements, setElements] = useState(null);
+  const [cardElement, setCardElement] = useState(null);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentError, setPaymentError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -45,7 +37,7 @@ const Pricing = () => {
         "Support email"
       ],
       popular: false,
-      priceId: "price_particulier_monthly"
+      priceId: "price_particulier_monthly" // À remplacer par votre vrai Price ID
     },
     {
       id: 'professionnel',
@@ -64,7 +56,7 @@ const Pricing = () => {
         "Tableau de bord analytique"
       ],
       popular: true,
-      priceId: "price_professionnel_monthly"
+      priceId: "price_professionnel_monthly" // À remplacer par votre vrai Price ID
     },
     {
       id: 'agence',
@@ -87,6 +79,68 @@ const Pricing = () => {
     }
   ];
 
+  // Initialisation de Stripe
+  useEffect(() => {
+    const loadStripe = async () => {
+      try {
+        // Charger Stripe dynamiquement
+        const script = document.createElement('script');
+        script.src = 'https://js.stripe.com/v3/';
+        script.async = true;
+        document.head.appendChild(script);
+
+        script.onload = () => {
+          const stripeInstance = window.Stripe(STRIPE_PUBLIC_KEY);
+          const elementsInstance = stripeInstance.elements();
+          
+          setStripe(stripeInstance);
+          setElements(elementsInstance);
+        };
+      } catch (error) {
+        console.error('Erreur lors du chargement de Stripe:', error);
+      }
+    };
+
+    loadStripe();
+  }, []);
+
+  // Initialiser CardElement quand on affiche le formulaire
+  useEffect(() => {
+    if (elements && showPaymentForm && !cardElement) {
+      const card = elements.create('card', {
+        style: {
+          base: {
+            fontSize: '16px',
+            color: '#1a202c',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            '::placeholder': {
+              color: '#9ca3af',
+            },
+          },
+          invalid: {
+            color: '#dc2626',
+            iconColor: '#dc2626',
+          },
+        },
+        hidePostalCode: true,
+      });
+
+      // Monter l'élément dans le DOM
+      setTimeout(() => {
+        const cardContainer = document.getElementById('card-element-container');
+        if (cardContainer) {
+          card.mount('#card-element-container');
+          setCardElement(card);
+
+          // Écouter les changements
+          card.on('change', (event) => {
+            setPaymentError(event.error ? event.error.message : '');
+          });
+        }
+      }, 100);
+    }
+  }, [elements, showPaymentForm]);
+
   const handlePlanSelect = (plan) => {
     if (plan.id === 'agence') {
       // Redirection vers contact pour le plan agence
@@ -99,6 +153,7 @@ const Pricing = () => {
 
     setSelectedPlan(plan);
     setShowPaymentForm(true);
+    setPaymentError('');
   };
 
   const handleInputChange = (e) => {
@@ -106,42 +161,78 @@ const Pricing = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // Fonction pour créer l'abonnement côté backend
+  const createSubscription = async (paymentMethodId) => {
+    try {
+      const response = await fetch('/api/create-subscription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          paymentMethodId,
+          priceId: selectedPlan.priceId,
+          customerEmail: formData.email,
+          customerName: `${formData.firstName} ${formData.lastName}`,
+          planType: selectedPlan.id
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Erreur lors de la création de l\'abonnement');
+      }
+
+      return result;
+    } catch (error) {
+      console.error('Erreur API:', error);
+      throw error;
+    }
+  };
+
   const handleSubmitPayment = async () => {
     if (!formData.firstName || !formData.lastName || !formData.email) {
-      alert('Veuillez remplir tous les champs obligatoires');
+      setPaymentError('Veuillez remplir tous les champs obligatoires');
       return;
     }
+
+    if (!stripe || !cardElement) {
+      setPaymentError('Stripe n\'est pas encore chargé. Veuillez patienter.');
+      return;
+    }
+
     setIsProcessing(true);
+    setPaymentError('');
 
     try {
-      // Simuler la création du PaymentMethod avec Stripe
-      const paymentMethodResult = await mockStripe.createPaymentMethod({
+      // Créer le PaymentMethod
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: 'card',
+        card: cardElement,
         billing_details: {
           name: `${formData.firstName} ${formData.lastName}`,
           email: formData.email,
-        }
+        },
       });
 
-      if (paymentMethodResult.error) {
-        throw new Error(paymentMethodResult.error.message);
+      if (error) {
+        throw new Error(error.message);
       }
 
-      // Simuler l'appel API backend
-      const subscriptionData = {
-        paymentMethodId: paymentMethodResult.paymentMethod.id,
-        priceId: selectedPlan.priceId,
-        customerEmail: formData.email,
-        customerName: `${formData.firstName} ${formData.lastName}`,
-        planType: selectedPlan.id
-      };
+      // Créer l'abonnement via votre backend
+      const subscription = await createSubscription(paymentMethod.id);
 
-      // Simuler une réponse du backend
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log('Données envoyées au backend:', subscriptionData);
-      
-      // Succès simulé
+      // Gérer les cas nécessitant une authentification 3D Secure
+      if (subscription.client_secret) {
+        const { error: confirmError } = await stripe.confirmCardPayment(subscription.client_secret);
+        
+        if (confirmError) {
+          throw new Error(confirmError.message);
+        }
+      }
+
+      // Succès !
       alert(`🎉 Félicitations ! Votre abonnement ${selectedPlan.name} a été créé avec succès.\n\nVotre essai gratuit de 14 jours commence maintenant.\nVous recevrez un email de confirmation sous peu.`);
       
       // Réinitialiser le formulaire
@@ -149,9 +240,12 @@ const Pricing = () => {
       setSelectedPlan(null);
       setFormData({ firstName: '', lastName: '', email: '' });
 
+      // Rediriger vers le dashboard (à adapter selon votre routing)
+      // window.location.href = '/dashboard';
+
     } catch (error) {
-      console.error('Erreur:', error);
-      alert('Erreur lors du traitement du paiement: ' + error.message);
+      console.error('Erreur lors du paiement:', error);
+      setPaymentError(error.message || 'Une erreur est survenue lors du traitement de votre paiement.');
     } finally {
       setIsProcessing(false);
     }
@@ -160,7 +254,13 @@ const Pricing = () => {
   const BackButton = () => (
     <Button
       variant="outline"
-      onClick={() => setShowPaymentForm(false)}
+      onClick={() => {
+        setShowPaymentForm(false);
+        if (cardElement) {
+          cardElement.destroy();
+          setCardElement(null);
+        }
+      }}
       className="mb-6 hover:bg-gray-50"
     >
       <ArrowLeft className="w-4 h-4 mr-2" />
@@ -215,7 +315,6 @@ const Pricing = () => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     placeholder="Votre prénom"
                   />
@@ -229,7 +328,6 @@ const Pricing = () => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     placeholder="Votre nom"
                   />
@@ -244,7 +342,6 @@ const Pricing = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                   placeholder="votre.email@exemple.com"
                 />
@@ -261,11 +358,12 @@ const Pricing = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Carte bancaire *
                 </label>
-                <div className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-500 italic">
-                  [Élément Stripe sera intégré ici]
-                  <div className="text-xs mt-1">
-                    Dans un vrai environnement, Stripe Elements sera monté ici
-                  </div>
+                <div 
+                  id="card-element-container"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-colors bg-white"
+                  style={{ minHeight: '40px' }}
+                >
+                  {/* Stripe Card Element sera monté ici */}
                 </div>
               </div>
               <div className="flex items-center mt-3 text-sm text-gray-600">
@@ -274,17 +372,32 @@ const Pricing = () => {
               </div>
             </div>
 
+            {/* Message d'erreur */}
+            {paymentError && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start">
+                <AlertCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-red-800 text-sm font-medium">Erreur de paiement</p>
+                  <p className="text-red-700 text-sm mt-1">{paymentError}</p>
+                </div>
+              </div>
+            )}
+
             {/* Bouton de soumission */}
             <Button
               type="button"
               onClick={handleSubmitPayment}
-              disabled={isProcessing}
-              className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+              disabled={isProcessing || !stripe}
+              className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isProcessing ? (
                 <div className="flex items-center justify-center">
                   <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent mr-2"></div>
                   Traitement en cours...
+                </div>
+              ) : !stripe ? (
+                <div className="flex items-center justify-center">
+                  <div className="animate-pulse">Chargement de Stripe...</div>
                 </div>
               ) : (
                 <div className="flex items-center justify-center">
@@ -293,7 +406,7 @@ const Pricing = () => {
                 </div>
               )}
             </Button>
-            </div>
+          </div>
         </CardContent>
       </Card>
 
