@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
-import { supabase } from './supabase'
+import { supabase } from '../supabase'
 
 createRoot(document.getElementById("root")!).render(
   <SessionContextProvider supabaseClient={supabase}>
