@@ -7,10 +7,13 @@ import {
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "../../supabase";
+import { useAuth } from "@/hooks/useAuth";
 
-const AuthModal = ({ isOpen, onClose }) => {
+const AuthModal = () => {
+  const { isAuthModalOpen, closeAuthModal } = useAuth();
+
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isAuthModalOpen} onOpenChange={closeAuthModal}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Connectez-vous ou créez un compte</DialogTitle>
