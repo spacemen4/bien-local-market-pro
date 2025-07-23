@@ -5,10 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import { useUser } from '@supabase/auth-helpers-react';
 import { supabase } from '../../supabase';
+import AuthModal from './AuthModal';
 
 const Pricing = () => {
   const { user } = useUser() || {};
   const [loading, setLoading] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   const plans = [
     {
@@ -77,8 +79,7 @@ const Pricing = () => {
     setLoading(true);
 
     if (!user) {
-      // or redirect to login
-      alert("Veuillez vous connecter pour vous abonner.");
+      setIsAuthModalOpen(true);
       setLoading(false);
       return;
     }
@@ -205,6 +206,7 @@ const Pricing = () => {
           </div>
         </div>
       </div>
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </section>
   );
 };
