@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js'
 
 // Configuration Supabase
 const supabaseUrl = 'https://osqpvyrctlhagtzkbspv.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcXB2eXJjdGxoYWd0emtic3B2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTAyODU2NiwiZXhwIjoyMDY2NjA0NTY2fQ.9AJhgntwn9jKBtkboqDNswPuM2O8hu-YKKl-mJOBFos'
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcXB2eXJjdGxoYWd0emtic3B2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEwMjg1NjYsImV4cCI6MjA2NjYwNDU2Nn0.4APWILaWXOtXCwdFYTk4MDithvZhp55ZJB6PnVn8D1w'
 
 // Créer le client Supabase
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
@@ -57,10 +57,15 @@ export const getCurrentUser = async () => {
 
 // Fonction pour se connecter
 export const signIn = async (email: string, password: string) => {
+  console.log("Attempting to sign in with:", email);
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   })
+  if (error) {
+    console.error("Sign-in error:", error);
+  }
+  console.log("Sign-in data:", data);
   return { data, error }
 }
 
