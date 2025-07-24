@@ -6,11 +6,12 @@ import { Check } from "lucide-react";
 import { useUser } from '@supabase/auth-helpers-react';
 import { supabase } from '../../supabase';
 import AuthModal from './AuthModal';
+import { useAuth } from '@/hooks/useAuth';
 
 const Pricing = () => {
   const { user } = useUser() || {};
   const [loading, setLoading] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { openAuthModal } = useAuth();
 
   const plans = [
     {
@@ -79,7 +80,7 @@ const Pricing = () => {
     setLoading(true);
 
     if (!user) {
-      setIsAuthModalOpen(true);
+      openAuthModal();
       setLoading(false);
       return;
     }
@@ -206,7 +207,6 @@ const Pricing = () => {
           </div>
         </div>
       </div>
-      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </section>
   );
 };
