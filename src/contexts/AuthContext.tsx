@@ -17,8 +17,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   useEffect(() => {
-    const session = supabase.auth.getSession();
-    setUser(session?.data.session?.user ?? null);
+    const fetchSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+    };
+
+    fetchSession();
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
