@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Play } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
+  const { openAuthModal } = useAuth();
+
   return (
     <section className="relative pt-20 pb-16 bg-gradient-hero text-white overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
@@ -25,11 +28,13 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/95 font-semibold shadow-premium hover:shadow-float transform hover:scale-105 transition-all duration-300">
-                  Essai Gratuit 14 Jours
-                </Button>
-              </a>
+              <Button 
+                onClick={openAuthModal}
+                size="lg" 
+                className="bg-white text-primary hover:bg-white/95 font-semibold shadow-premium hover:shadow-float transform hover:scale-105 transition-all duration-300"
+              >
+                Essai Gratuit 14 Jours 
+              </Button>
               <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm bg-white/5 hover:border-white/50 transition-all duration-300">
                   <Play className="mr-2 h-5 w-5" />
