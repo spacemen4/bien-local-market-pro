@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Smartphone, CheckCircle, AlertCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const CTA = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +12,9 @@ const CTA = () => {
     type: '',
     message: ''
   });
+
+  // Récupération de la fonction openAuthModal depuis useAuth
+  const { openAuthModal } = useAuth();
 
   const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -74,11 +78,11 @@ Cordialement`,
     try {
       await submitToContactDB(email);
       
-      showAlert('success', 'Parfait ! Nous préparons votre accès. Vous recevrez vos identifiants par email dans quelques minutes.');
+      showAlert('success', 'Parfait ! Votre demande d\'essai a été enregistrée. Connectez-vous maintenant pour finaliser votre inscription.');
       
-      // Optionnel: redirection ou ouverture du modal d'auth après succès
+      // Ouverture du modal d'authentification après succès
       setTimeout(() => {
-        // openAuthModal(); // Si vous voulez ouvrir le modal d'auth
+        openAuthModal();
         console.log('Compte d\'essai créé pour:', email);
       }, 2000);
       
@@ -152,7 +156,7 @@ Cordialement`,
                     <p className="font-medium">{alert.message}</p>
                     {alert.type === 'success' && (
                       <p className="text-sm mt-1 opacity-75">
-                        Vérifiez également vos spams si vous ne recevez rien.
+                        Le modal de connexion va s'ouvrir dans quelques secondes.
                       </p>
                     )}
                   </div>
@@ -211,49 +215,6 @@ Cordialement`,
               <span>✓ Aucune carte requise</span>
               <span>✓ Configuration en 2 minutes</span>
               <span>✓ Support inclus</span>
-            </div>
-          </div>
-                    
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            <div className="text-left">
-              <h4 className="text-xl font-semibold mb-4 flex items-center">
-                <Smartphone className="mr-3 h-6 w-6" />
-                Téléchargez l'app
-              </h4>
-              <p className="text-white/80 mb-4">
-                Disponible sur iOS et Android. Synchronisation automatique avec votre compte web.
-              </p>
-              <div className="flex space-x-4">
-                <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="text-white border-white/30 hover:bg-white/10">
-                    App Store
-                  </Button>
-                </a>
-                <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="text-white border-white/30 hover:bg-white/10">
-                    Google Play
-                  </Button>
-                </a>
-              </div>
-            </div>
-                                  
-            <div className="text-left">
-              <h4 className="text-xl font-semibold mb-4">
-                Besoin d'aide ?
-              </h4>
-              <p className="text-white/80 mb-4">
-                Notre équipe française est là pour vous accompagner dans votre prise en main.
-              </p>
-              <div className="flex space-x-4">
-                <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="text-white border-white/30 hover:bg-white/10">
-                    Démo personnalisée
-                  </Button>
-                </a>
-                <Button variant="outline" className="text-white border-white/30 hover:bg-white/10">
-                  Contacter l'équipe
-                </Button>
-              </div>
             </div>
           </div>
         </div>
