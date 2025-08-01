@@ -9,7 +9,7 @@ import AuthModal from './AuthModal';
 import { useAuth } from '@/hooks/useAuth';
 
 const Pricing = () => {
-  const { user } = useUser() || {};
+  const user = useUser();
   const [loading, setLoading] = useState(false);
   const { openAuthModal } = useAuth();
 

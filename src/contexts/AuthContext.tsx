@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const value = {
     user,
-    signOut: () => supabase.auth.signOut(),
+    signOut: async () => { await supabase.auth.signOut(); },
     isAuthModalOpen,
     openAuthModal: () => setIsAuthModalOpen(true),
     closeAuthModal: () => setIsAuthModalOpen(false),

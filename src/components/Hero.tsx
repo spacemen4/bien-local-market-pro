@@ -35,7 +35,7 @@ const Hero = () => {
               >
                 Essai Gratuit 14 Jours 
               </Button>
-              <a href="https://bien-local-market-pro.vercel.app" target="_blank" rel="noopener noreferrer">
+              <a href="/demo">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm bg-white/5 hover:border-white/50 transition-all duration-300">
                   <Play className="mr-2 h-5 w-5" />
                   Voir la Démo
