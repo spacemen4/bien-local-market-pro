@@ -14,7 +14,7 @@ const Header = () => {
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
+          <a href="/#features" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Fonctionnalités
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
@@ -22,15 +22,15 @@ const Header = () => {
             Démo
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#pricing" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
+          <a href="/#pricing" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Tarifs
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#testimonials" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
+          <a href="/#testimonials" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Témoignages
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#contact" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
+          <a href="/#contact" className="text-foreground hover:text-primary transition-all duration-300 hover:scale-105 relative group">
             Contact
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
