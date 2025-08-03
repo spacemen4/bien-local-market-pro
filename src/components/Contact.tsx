@@ -163,15 +163,6 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                    <MapPin className="h-6 w-6 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Adresse</h4>
-                    <p className="text-muted-foreground">123 Rue de la République<br />69000 Lyon, France</p>
-                  </div>
-                </div>
               </div>
             </div>
 
