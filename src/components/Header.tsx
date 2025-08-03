@@ -50,11 +50,11 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Button onClick={openAuthModal} variant="default" className="hidden md:inline-flex hover:bg-primary/5 transition-all duration-300 hover:scale-105">
-                Connexion
+              <Button asChild variant="default" className="hidden md:inline-flex hover:bg-primary/5 transition-all duration-300 hover:scale-105">
+                <a href="https://app.etatdelux.com/">Connexion</a>
               </Button>
-              <Button onClick={openAuthModal} className="bg-gradient-premium text-black hover:shadow-premium transition-all duration-300 hover:scale-105 animate-pulse-glow">
-                Essai Gratuit
+              <Button asChild className="bg-gradient-premium text-black hover:shadow-premium transition-all duration-300 hover:scale-105 animate-pulse-glow">
+                <a href="https://app.etatdelux.com/">Essai Gratuit</a>
               </Button>
             </>
           )}

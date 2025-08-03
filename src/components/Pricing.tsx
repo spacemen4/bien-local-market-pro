@@ -5,13 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import { useUser } from '@supabase/auth-helpers-react';
 import { supabase } from '../../supabase';
-import AuthModal from './AuthModal';
 import { useAuth } from '@/hooks/useAuth';
 
 const Pricing = () => {
   const user = useUser();
   const [loading, setLoading] = useState(false);
-  const { openAuthModal } = useAuth();
 
   const plans = [
     {
@@ -80,7 +78,7 @@ const Pricing = () => {
     setLoading(true);
 
     if (!user) {
-      openAuthModal();
+      window.location.href = 'https://app.etatdelux.com/';
       setLoading(false);
       return;
     }
