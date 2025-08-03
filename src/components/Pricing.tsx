@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import { useUser } from '@supabase/auth-helpers-react';
 import { supabase } from '../../supabase';
-import { useAuth } from '@/hooks/useAuth';
 
 const Pricing = () => {
   const user = useUser();
