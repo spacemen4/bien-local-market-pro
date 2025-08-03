@@ -13,7 +13,7 @@ const Demo = () => {
           <div className="relative bg-white rounded-2xl shadow-premium p-8 border border-primary/10">
             <div className="aspect-video rounded-xl overflow-hidden shadow-float">
               <iframe
-                src="https://www.youtube.com/embed/0MKj01Et9t8"
+                src="https://www.youtube.com/embed/eFnlBEgGCbg"
                 title="Démonstration ÉtatLux - Application d'États des Lieux"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
