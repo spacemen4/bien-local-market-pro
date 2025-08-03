@@ -1,11 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Play } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
-  const { openAuthModal } = useAuth();
-
   return (
     <section className="relative pt-20 pb-16 bg-gradient-hero text-white overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
@@ -28,12 +25,12 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button 
-                onClick={openAuthModal}
+              <Button
+                asChild
                 size="lg" 
                 className="bg-white text-primary hover:bg-white/95 font-semibold shadow-premium hover:shadow-float transform hover:scale-105 transition-all duration-300"
               >
-                Essai Gratuit 14 Jours 
+                <a href="https://app.etatdelux.com/">Essai Gratuit 14 Jours</a>
               </Button>
               <a href="#demo">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm bg-white/5 hover:border-white/50 transition-all duration-300">
