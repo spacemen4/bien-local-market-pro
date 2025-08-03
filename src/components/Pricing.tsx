@@ -3,12 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
-import { useUser } from '@supabase/auth-helpers-react';
-import { supabase } from '../../supabase';
-import { useAuth } from '@/hooks/useAuth';
 
 const Pricing = () => {
-  const user = useUser();
   const [loading, setLoading] = useState(false);
 
   const plans = [
@@ -76,45 +72,9 @@ const Pricing = () => {
     }
 
     setLoading(true);
-
-    if (!user) {
-      window.location.href = 'https://app.etatdelux.com/';
-      setLoading(false);
-      return;
-    }
-
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      const token = session?.access_token;
-
-      if (!token) {
-        throw new Error("No token found");
-      }
-
-      // Replace with your actual Deno function URL
-      const response = await fetch('https://osqpvyrctlhagtzkbspv.functions.supabase.co/create_abonnement_stripe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ priceId: plan.priceId })
-      });
-
-      const result = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(result.error || 'Erreur lors de la création de l\'abonnement');
-      }
-
-      window.location.href = result.url;
-
-    } catch (error) {
-      console.error('Erreur API:', error);
-      alert(error.message);
-    } finally {
-      setLoading(false);
-    }
+    // Always redirect to the app URL since there is no logged-in user concept anymore.
+    window.location.href = 'https://app.etatdelux.com/';
+    setLoading(false);
   };
 
   return (
