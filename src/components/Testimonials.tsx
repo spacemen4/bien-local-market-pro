@@ -29,8 +29,8 @@ const Testimonials = () => {
   ];
 
   const stats = [
-    { number: "5000+", label: "Professionnels conquis" },
-    { number: "50000+", label: "États des lieux réalisés" },
+    { number: "50000+", label: "Professionnels conquis" },
+    { number: "De nombreux", label: "États des lieux réalisés" },
     { number: "4.9/5", label: "Note moyenne" },
     { number: "75%", label: "Gain de temps moyen" }
   ];

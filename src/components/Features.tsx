@@ -41,8 +41,8 @@ const Features = () => {
     },
     {
       icon: Shield,
-      title: "Conformité Légale",
-      description: "Respectez automatiquement toutes les obligations légales en vigueur."
+      title: "Processus Standardisé",
+      description: "Suivez un parcours optimisé pour des états des lieux complets et rigoureux."
     }
   ];
 
