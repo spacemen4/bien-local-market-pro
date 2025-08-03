@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Demo from "./pages/Demo";
+
 import Layout from "./components/Layout";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import SubscriptionCancel from "./pages/SubscriptionCancel";
@@ -25,7 +25,6 @@ const App = () => {
             <Layout>
               <Routes>
                 <Route path="/" element={<Index />} />
-                <Route path="/demo" element={<Demo />} />
                 <Route
                   path="/subscription/success"
                   element={<SubscriptionSuccess />}
