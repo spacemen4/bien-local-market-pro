@@ -9,8 +9,6 @@ import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import SubscriptionCancel from "./pages/SubscriptionCancel";
-import { AuthProvider } from "./contexts/AuthContext";
-import AuthModal from "./components/AuthModal";
 
 const queryClient = new QueryClient();
 
@@ -20,26 +18,23 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <AuthProvider>
-          <BrowserRouter>
-            <Layout>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route
-                  path="/subscription/success"
-                  element={<SubscriptionSuccess />}
-                />
-                <Route
-                  path="/subscription/cancel"
-                  element={<SubscriptionCancel />}
-                />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Layout>
-          </BrowserRouter>
-          <AuthModal />
-        </AuthProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route
+                path="/subscription/success"
+                element={<SubscriptionSuccess />}
+              />
+              <Route
+                path="/subscription/cancel"
+                element={<SubscriptionCancel />}
+              />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
