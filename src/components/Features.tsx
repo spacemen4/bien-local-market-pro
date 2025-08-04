@@ -63,13 +63,13 @@ const Features = () => {
             <img 
               src={appMockup} 
               alt="Interface de l'application mobile"
-              className="w-full max-w-md mx-auto animate-float"
+              className="w-full max-w-md mx-auto"
             />
           </div>
           
           <div className="space-y-6">
             {features.map((feature, index) => (
-              <Card key={index} className="border-0 shadow-card hover:shadow-glow transition-all duration-300">
+              <Card key={index} className="border bg-transparent shadow-none hover:border-primary/50 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className="bg-primary/10 p-3 rounded-xl">
@@ -102,8 +102,8 @@ const Features = () => {
           </div>
           
           <div className="text-center">
-            <div className="bg-secondary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CloudUpload className="h-10 w-10 text-secondary" />
+            <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CloudUpload className="h-10 w-10 text-primary" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Cloud Sécurisé</h3>
             <p className="text-muted-foreground">
