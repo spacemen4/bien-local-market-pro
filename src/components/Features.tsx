@@ -9,7 +9,6 @@ import {
   CloudUpload,
   CheckCircle,
 } from "lucide-react";
-import appMockup from "@/assets/app-mockup.jpg";
 
 const features = [
   {
@@ -17,24 +16,30 @@ const features = [
     title: "Photos illimitées et datées",
     description:
       "Ajoutez autant de photos que nécessaire. Elles sont automatiquement horodatées et intégrées au rapport.",
+    image: null,
   },
   {
     icon: FileText,
     title: "Rapports PDF conformes",
     description:
       "Générez en un clic des rapports PDF professionnels, conformes à la loi ALUR, prêts à être envoyés.",
+    image:
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
   },
   {
     icon: Users,
     title: "Signature électronique",
     description:
       "Faites signer les parties directement sur tablette ou smartphone pour une validation instantanée et sécurisée.",
+    image:
+      "https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=800&auto=format&fit=crop",
   },
   {
     icon: Clock,
     title: "Modèles pré-remplis",
     description:
       "Gagnez un temps précieux en utilisant des modèles d'états des lieux personnalisables et réutilisables.",
+    image: null,
   },
 ];
 
@@ -74,37 +79,36 @@ const Features = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-          <div className="relative group perspective-1000">
-            <img
-              src={appMockup}
-              alt="Interface de l'application mobile ÉtatLux"
-              className="w-full max-w-md mx-auto rounded-2xl shadow-strong transition-transform duration-700 ease-out group-hover:rotate-y-[8deg] group-hover:scale-105"
-            />
-          </div>
-
-          <div className="space-y-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-lg bg-gradient-glass-light dark:bg-gradient-glass-dark border border-white/20 dark:border-white/10 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-2"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-lg">
-                    <feature.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-1">
-                      {feature.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {feature.description}
-                    </p>
-                  </div>
+        <div className="grid md:grid-cols-2 gap-8 mb-24">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="p-6 rounded-lg bg-gradient-glass-light dark:bg-gradient-glass-dark border border-white/20 dark:border-white/10 shadow-soft hover:shadow-medium transition-all duration-300 "
+            >
+              {feature.image && (
+                <div className="relative group perspective-1000 mb-4">
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="rounded-lg shadow-medium w-full h-auto transform transition-transform duration-700 ease-out group-hover:rotate-y-[-8deg] group-hover:scale-105"
+                  />
+                </div>
+              )}
+              <div className="flex items-start space-x-4">
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <feature.icon className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    {feature.description}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
