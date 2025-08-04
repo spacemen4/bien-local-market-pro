@@ -77,21 +77,6 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="mt-24 text-center">
-          <p className="text-sm font-semibold text-muted-foreground mb-4">
-            Ils nous font confiance au quotidien
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
-            {partners.map((partner) => (
-              <img
-                key={partner.name}
-                src={`https://avatar.vercel.sh/${partner.logo}.svg?text=${partner.name}`}
-                alt={partner.name}
-                className="h-8 opacity-60 hover:opacity-100 transition-opacity"
-              />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
