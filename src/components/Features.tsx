@@ -1,125 +1,126 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Calendar, 
-  Camera, 
-  FileText, 
-  Users, 
-  Clock, 
+import {
+  Calendar,
+  Camera,
+  FileText,
+  Users,
+  Clock,
   Shield,
   Smartphone,
   CloudUpload,
-  CheckCircle
+  CheckCircle,
 } from "lucide-react";
 import appMockup from "@/assets/app-mockup.jpg";
 
-const Features = () => {
-  const features = [
-    {
-      icon: Calendar,
-      title: "Planification Intelligente",
-      description: "Gérez vos rendez-vous et optimisez vos tournées avec notre calendrier intégré."
-    },
-    {
-      icon: Camera,
-      title: "Photos HD Intégrées",
-      description: "Prenez des photos haute définition directement dans l'app avec géolocalisation automatique."
-    },
-    {
-      icon: FileText,
-      title: "Rapports Automatisés",
-      description: "Générez des états des lieux professionnels en PDF en quelques clics."
-    },
-    {
-      icon: Users,
-      title: "Gestion Multi-clients",
-      description: "Organisez vos propriétaires, locataires et mandats depuis une interface unique."
-    },
-    {
-      icon: Clock,
-      title: "Gain de Temps",
-      description: "Réduisez de 75% le temps consacré à la paperasse administrative."
-    },
-    {
-      icon: Shield,
-      title: "Processus Standardisé",
-      description: "Suivez un parcours optimisé pour des états des lieux complets et rigoureux."
-    }
-  ];
+const features = [
+  {
+    icon: Camera,
+    title: "Photos illimitées et datées",
+    description:
+      "Ajoutez autant de photos que nécessaire. Elles sont automatiquement horodatées et intégrées au rapport.",
+  },
+  {
+    icon: FileText,
+    title: "Rapports PDF conformes",
+    description:
+      "Générez en un clic des rapports PDF professionnels, conformes à la loi ALUR, prêts à être envoyés.",
+  },
+  {
+    icon: Users,
+    title: "Signature électronique",
+    description:
+      "Faites signer les parties directement sur tablette ou smartphone pour une validation instantanée et sécurisée.",
+  },
+  {
+    icon: Clock,
+    title: "Modèles pré-remplis",
+    description:
+      "Gagnez un temps précieux en utilisant des modèles d'états des lieux personnalisables et réutilisables.",
+  },
+];
 
+const bottomFeatures = [
+  {
+    icon: Smartphone,
+    title: "Mobile First",
+    description:
+      "Optimisé pour smartphone et tablette, fonctionne même hors ligne.",
+  },
+  {
+    icon: CloudUpload,
+    title: "Cloud Sécurisé",
+    description:
+      "Vos données sont sauvegardées automatiquement et accessibles partout.",
+  },
+  {
+    icon: CheckCircle,
+    title: "Simplicité",
+    description:
+      "Interface intuitive, prise en main immédiate pour tous vos équipes.",
+  },
+];
+
+const Features = () => {
   return (
-    <section id="features" className="py-20 bg-muted/30">
+    <section id="features" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            Tout ce dont vous avez besoin
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Une puissance inégalée, une simplicité déconcertante
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Une solution complète pensée pour les professionnels de l'immobilier et les particuliers exigeants.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            ÉtatLux a été conçu pour éliminer les tâches répétitives et vous
+            permettre de vous concentrer sur l'essentiel. Voici comment nous
+            transformons votre travail.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-          <div>
-            <img 
-              src={appMockup} 
-              alt="Interface de l'application mobile"
-              className="w-full max-w-md mx-auto animate-float"
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+          <div className="relative group perspective-1000">
+            <img
+              src={appMockup}
+              alt="Interface de l'application mobile ÉtatLux"
+              className="w-full max-w-md mx-auto rounded-2xl shadow-strong transition-transform duration-700 ease-out group-hover:rotate-y-[8deg] group-hover:scale-105"
             />
           </div>
-          
+
           <div className="space-y-6">
             {features.map((feature, index) => (
-              <Card key={index} className="border-0 shadow-card hover:shadow-glow transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-primary/10 p-3 rounded-xl">
-                      <feature.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {feature.description}
-                      </p>
-                    </div>
+              <div
+                key={index}
+                className="p-6 rounded-lg bg-gradient-glass-light dark:bg-gradient-glass-dark border border-white/20 dark:border-white/10 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="bg-primary/10 p-3 rounded-lg">
+                    <feature.icon className="h-6 w-6 text-primary" />
                   </div>
-                </CardContent>
-              </Card>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-1">
+                      {feature.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Smartphone className="h-10 w-10 text-primary" />
+          {bottomFeatures.map((feature, index) => (
+            <div key={index} className="text-center">
+              <div className="bg-accent w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 border border-primary/10">
+                <feature.icon
+                  className={`h-10 w-10 ${
+                    index === 1 ? "text-secondary" : "text-primary"
+                  }`}
+                />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground">{feature.description}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Mobile First</h3>
-            <p className="text-muted-foreground">
-              Optimisé pour smartphone et tablette, fonctionne même hors ligne.
-            </p>
-          </div>
-          
-          <div className="text-center">
-            <div className="bg-secondary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CloudUpload className="h-10 w-10 text-secondary" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Cloud Sécurisé</h3>
-            <p className="text-muted-foreground">
-              Vos données sont sauvegardées automatiquement et accessibles partout.
-            </p>
-          </div>
-          
-          <div className="text-center">
-            <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="h-10 w-10 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Simplicité</h3>
-            <p className="text-muted-foreground">
-              Interface intuitive, prise en main immédiate pour tous vos équipes.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>

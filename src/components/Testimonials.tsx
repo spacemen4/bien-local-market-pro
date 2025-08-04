@@ -1,107 +1,100 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Star } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Star, Users, Home, Clock, Award } from "lucide-react";
 import professionalsImage from "@/assets/professionals.jpg";
 
+const testimonials = [
+  {
+    name: "Marie Dubois",
+    role: "Agent Immobilier, Century 21",
+    content:
+      "ÉtatLux a transformé ma productivité. Les rapports sont professionnels et mes clients sont impressionnés par la rapidité.",
+    avatar: "https://avatar.vercel.sh/marie.svg?text=MD",
+  },
+  {
+    name: "Julien Petit",
+    role: "Gestionnaire de biens",
+    content:
+      "L'application est un jeu d'enfant à utiliser. Le support est incroyablement réactif. Un must-have pour tout pro de l'immo.",
+    avatar: "https://avatar.vercel.sh/julien.svg?text=JP",
+  },
+];
+
+const stats = [
+  { icon: Users, number: "50,000+", label: "Utilisateurs actifs" },
+  { icon: Home, number: "1M+", label: "États des lieux réalisés" },
+  { icon: Clock, number: "75%", label: "Gain de temps moyen" },
+  { icon: Award, number: "4.9/5", label: "Note de satisfaction" },
+];
+
 const Testimonials = () => {
-  const testimonials = [
-    {
-      name: "Marie Dubois",
-      role: "Agent Immobilier, Century 21",
-      content: "ÉtatLux a révolutionné ma façon de travailler. Je gagne 2h par état des lieux et mes clients adorent recevoir le rapport en temps réel !",
-      rating: 5,
-      initials: "MD"
-    },
-    {
-      name: "Pierre Martin",
-      role: "Propriétaire particulier",
-      content: "Enfin une app simple et efficace ! Plus de paperasse, tout est digitalisé. Je recommande à tous les propriétaires.",
-      rating: 5,
-      initials: "PM"
-    },
-    {
-      name: "Sophie Laurent",
-      role: "Gestionnaire de patrimoine",
-      content: "L'interface est intuitive et le support client excellent. Nous avons équipé toute notre équipe, un investissement rentabilisé en 1 mois.",
-      rating: 5,
-      initials: "SL"
-    }
-  ];
-
-  const stats = [
-    { number: "50000+", label: "Professionnels conquis" },
-    { number: "De nombreux", label: "États des lieux réalisés" },
-    { number: "4.9/5", label: "Note moyenne" },
-    { number: "75%", label: "Gain de temps moyen" }
-  ];
-
   return (
-    <section id="testimonials" className="py-20 bg-muted/30">
+    <section id="testimonials" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            Ils nous font confiance
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Découvrez pourquoi des milliers de professionnels ont choisi ÉtatLux pour leurs états des lieux.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-          <div>
-            <img 
-              src={professionalsImage} 
-              alt="Équipe de professionnels de l'immobilier"
-              className="rounded-2xl shadow-card w-full h-auto"
-            />
-          </div>
-          
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <div className="text-left">
+              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                Ce que nos clients disent de nous
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-xl">
+                Nous sommes fiers de la confiance que nous accordent des milliers
+                de professionnels de l'immobilier.
+              </p>
+            </div>
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-0 shadow-card">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <Avatar className="w-12 h-12">
-                      <AvatarFallback className="bg-primary text-primary-foreground">
-                        {testimonial.initials}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <div className="flex space-x-1">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                          ))}
-                        </div>
-                      </div>
-                      <p className="text-foreground mb-3 italic">
-                        "{testimonial.content}"
-                      </p>
+              <div
+                key={index}
+                className="p-6 rounded-lg bg-gradient-glass-light dark:bg-gradient-glass-dark border border-white/20 dark:border-white/10 shadow-soft"
+              >
+                <div className="flex items-start space-x-4">
+                  <Avatar className="w-14 h-14 border-2 border-primary/50">
+                    <AvatarImage src={testimonial.avatar} />
+                    <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-2">
                       <div>
-                        <div className="font-semibold text-foreground">
+                        <p className="font-semibold text-foreground">
                           {testimonial.name}
-                        </div>
-                        <div className="text-sm text-muted-foreground">
+                        </p>
+                        <p className="text-sm text-muted-foreground">
                           {testimonial.role}
-                        </div>
+                        </p>
+                      </div>
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-5 w-5 fill-current" />
+                        ))}
                       </div>
                     </div>
+                    <p className="text-foreground italic">
+                      "{testimonial.content}"
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
+          </div>
+          <div className="relative hidden lg:block group perspective-1000">
+            <img
+              src={professionalsImage}
+              alt="Équipe de professionnels de l'immobilier souriants"
+              className="rounded-2xl shadow-strong w-full h-auto transition-transform duration-700 ease-out group-hover:rotate-y-[8deg] group-hover:scale-105"
+            />
           </div>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-8 text-center">
+        <div className="mt-24 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (
-            <div key={index} className="space-y-2">
-              <div className="text-4xl font-bold text-primary">
+            <div
+              key={index}
+              className="p-6 rounded-lg bg-accent/50 border border-border"
+            >
+              <stat.icon className="h-10 w-10 text-primary mx-auto mb-3" />
+              <div className="text-4xl font-extrabold text-foreground">
                 {stat.number}
               </div>
-              <div className="text-muted-foreground">
-                {stat.label}
-              </div>
+              <div className="text-muted-foreground mt-1">{stat.label}</div>
             </div>
           ))}
         </div>
