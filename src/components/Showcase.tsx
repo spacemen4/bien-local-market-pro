@@ -19,7 +19,7 @@ const showcaseFeatures = [
     description:
       "Organisez vos photos par pièce et ajoutez des commentaires détaillés. Notre outil de comparaison avant/après met en évidence les changements, simplifiant la détection des dégradations et la justification des retenues sur caution.",
     image:
-      "https://images.unsplash.com/photo-1582494764652-4a7f055aac40?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop",
   },
   {
     value: "signature",
