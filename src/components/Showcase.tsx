@@ -4,7 +4,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { Camera, Edit, FilePdf } from "lucide-react";
+import { Camera, Edit, FileText } from "lucide-react";
 
 const showcaseFeatures = [
   {
@@ -39,7 +39,7 @@ const showcaseFeatures = [
     value: "pdf",
     trigger: (
       <>
-        <FilePdf className="mr-2 h-5 w-5" />
+        <FileText className="mr-2 h-5 w-5" />
         Exports PDF Professionnels
       </>
     ),
