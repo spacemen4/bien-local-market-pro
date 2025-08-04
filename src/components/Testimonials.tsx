@@ -20,8 +20,8 @@ const testimonials = [
 ];
 
 const stats = [
-  { icon: Users, number: "50,000+", label: "Utilisateurs actifs" },
-  { icon: Home, number: "1M+", label: "États des lieux réalisés" },
+  { icon: Users, number: "+", label: "Utilisateurs actifs" },
+  { icon: Home, number: "+", label: "États des lieux réalisés" },
   { icon: Clock, number: "75%", label: "Gain de temps moyen" },
   { icon: Award, number: "4.9/5", label: "Note de satisfaction" },
 ];
