@@ -1,11 +1,9 @@
 import { useState } from "react";
 import {
-  Calendar,
   Camera,
   FileText,
   Users,
   Clock,
-  Shield,
   Smartphone,
   CloudUpload,
   CheckCircle,
@@ -115,7 +113,10 @@ const Features = () => {
             </div>
             <div className="space-y-6">
               <div className="bg-primary/10 p-4 rounded-lg inline-block">
-                <features[activeTab].icon className="h-8 w-8 text-primary" />
+                {(() => {
+                  const IconComponent = features[activeTab].icon;
+                  return <IconComponent className="h-8 w-8 text-primary" />;
+                })()}
               </div>
               <h3 className="text-3xl font-bold text-foreground">
                 {features[activeTab].title}
