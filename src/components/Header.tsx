@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, Building2 } from "lucide-react";
+import { Menu, Building2, X } from "lucide-react";
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <header className="fixed top-0 w-full bg-gradient-glass-light dark:bg-gradient-glass-dark backdrop-blur-glass border-b border-white/20 dark:border-white/10 z-50 shadow-soft">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -41,11 +48,51 @@ const Header = () => {
           >
             <a href="https://app.etatdelux.com/">Essai Gratuit</a>
           </Button>
-          <Button variant="outline" size="icon" className="md:hidden">
-            <Menu className="h-5 w-5" />
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-gradient-glass-light dark:bg-gradient-glass-dark backdrop-blur-glass border-b border-white/20 dark:border-white/10 shadow-soft">
+          <nav className="container mx-auto px-4 py-4 space-y-4">
+            {[
+              { href: "/#features", label: "Fonctionnalités" },
+              { href: "/#demo", label: "Démo" },
+              { href: "/#pricing", label: "Tarifs" },
+              { href: "/#testimonials", label: "Témoignages" },
+              { href: "/#contact", label: "Contact" },
+            ].map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block text-foreground/80 hover:text-primary font-medium transition-colors duration-300 py-2 border-b border-white/10 last:border-0"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="flex flex-col space-y-3 pt-4">
+              <Button asChild variant="ghost" className="w-full">
+                <a href="https://app.etatdelux.com/">Connexion</a>
+              </Button>
+              <Button
+                asChild
+                className="bg-gradient-premium text-primary-foreground hover:shadow-strong transition-all duration-300 w-full"
+              >
+                <a href="https://app.etatdelux.com/">Essai Gratuit</a>
+              </Button>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
