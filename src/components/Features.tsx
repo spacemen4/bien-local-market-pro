@@ -10,36 +10,39 @@ import {
   CheckCircle,
 } from "lucide-react";
 
+import photo1 from "../assets/photo (1).jpg";
+import photo2 from "../assets/photo (2).jpg";
+import photo3 from "../assets/photo (3).jpg";
+import photo4 from "../assets/photo (4).jpg";
+
 const features = [
   {
     icon: Camera,
     title: "Photos illimitées et datées",
     description:
       "Ajoutez autant de photos que nécessaire. Elles sont automatiquement horodatées et intégrées au rapport.",
-    image: null,
+    image: photo1,
   },
   {
     icon: FileText,
     title: "Rapports PDF conformes",
     description:
       "Générez en un clic des rapports PDF professionnels, conformes à la loi ALUR, prêts à être envoyés.",
-    image:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop",
+    image: photo2,
   },
   {
     icon: Users,
     title: "Signature électronique",
     description:
       "Faites signer les parties directement sur tablette ou smartphone pour une validation instantanée et sécurisée.",
-    image:
-      "https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=800&auto=format&fit=crop",
+    image: photo3,
   },
   {
     icon: Clock,
     title: "Modèles pré-remplis",
     description:
       "Gagnez un temps précieux en utilisant des modèles d'états des lieux personnalisables et réutilisables.",
-    image: null,
+    image: photo4,
   },
 ];
 
