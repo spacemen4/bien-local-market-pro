@@ -14,7 +14,7 @@ const plans = [
     features: [
       "1 bien",
       "1 état des lieux/an",
-      "Photos basiques",
+      "Jusqu'à 10 photos/bien",
       "Rapport PDF simple",
       "Support communautaire",
     ],
@@ -29,7 +29,7 @@ const plans = [
     features: [
       "Jusqu'à 5 biens",
       "5 états des lieux/mois",
-      "Photos illimitées",
+      "Jusqu'à 50 photos/bien",
       "Rapports PDF",
       "Support email",
     ],
@@ -45,7 +45,7 @@ const plans = [
       "Jusqu'à 100 biens",
       "Gestion équipe",
       "50 états des lieux/mois",
-      "Photos illimitées",
+      "Jusqu'à 200 photos/bien",
       "Rapports PDF",
       "Support prioritaire",
     ],
