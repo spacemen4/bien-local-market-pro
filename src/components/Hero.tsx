@@ -28,7 +28,7 @@ const Hero = () => {
               </span>
             </h1>
             <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto lg:mx-0">
-              Générez des rapports conformes, ajoutez des photos illimitées et
+              Générez des rapports conformes, ajoutez des photos nombreuses et
               faites signer électroniquement en quelques minutes. Fini la
               paperasse, bonjour l'efficacité.
             </p>

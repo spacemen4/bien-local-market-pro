@@ -17,7 +17,7 @@ import photo4 from "../assets/photo (4).jpg";
 const features = [
   {
     icon: Camera,
-    title: "Photos illimitées et datées",
+    title: "Photos nombreuses et datées",
     description:
       "Ajoutez autant de photos que nécessaire. Elles sont automatiquement horodatées et intégrées au rapport.",
     image: photo1,
