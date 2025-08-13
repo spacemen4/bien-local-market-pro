@@ -6,6 +6,21 @@ import { cn } from "@/lib/utils";
 
 const plans = [
   {
+    id: "gratuit",
+    name: "Gratuit",
+    price: "0",
+    period: "/mois",
+    description: "Pour découvrir notre solution.",
+    features: [
+      "1 bien",
+      "1 état des lieux/an",
+      "Photos basiques",
+      "Rapport PDF simple",
+      "Support communautaire",
+    ],
+    popular: false,
+  },
+  {
     id: "particulier",
     name: "Essentiel",
     price: "9",
@@ -13,8 +28,8 @@ const plans = [
     description: "Pour les propriétaires et les petites structures.",
     features: [
       "Jusqu'à 5 biens",
-      "États des lieux illimités",
-      "Photos HD illimitées",
+      "5 états des lieux/mois",
+      "Photos illimitées",
       "Rapports PDF",
       "Support email",
     ],
@@ -29,8 +44,8 @@ const plans = [
     features: [
       "Jusqu'à 100 biens",
       "Gestion équipe",
-      "États des lieux illimités",
-      "Photos HD illimitées",
+      "50 états des lieux/mois",
+      "Photos illimitées",
       "Rapports PDF",
       "Support prioritaire",
     ],
